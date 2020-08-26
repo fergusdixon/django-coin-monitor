@@ -16,3 +16,7 @@ poetry install
 poetry shell
 ```
 
+##### Install pre-commit checks
+```
+pre-commit install
+```
