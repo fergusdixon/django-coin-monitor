@@ -18,6 +18,6 @@ from django.urls import path
 from coin_monitor_api import views
 
 urlpatterns = [
-    path('coinList/', views.get_coin_list),
-    path('marketCap', views.get_market_cap)
+    path('coinList/', views.CoinList.as_view()),
+    path('marketCap', views.MarketCapDetail.as_view())
 ]

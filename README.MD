@@ -20,3 +20,6 @@ poetry shell
 ```
 pre-commit install
 ```
+
+## Caching
+Response are cached for 1 hour to reduce strain on the 3rd party API
