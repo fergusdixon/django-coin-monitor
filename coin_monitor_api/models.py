@@ -1,3 +1,11 @@
-from django.db import models
+"""
+These are not backed by a persistent DB
+"""
 
-# Create your models here.
+from pydantic import BaseModel
+
+
+class Coin(BaseModel):
+    id: str
+    name: str
+    symbol: str
