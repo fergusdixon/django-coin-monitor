@@ -35,6 +35,7 @@ pre-commit install
 
 ## Routes
 - `GET /coinList/`: Gets a list of coins
+
 Response:
 ```json
 [
@@ -46,7 +47,8 @@ Response:
 ]
 ```
 
-- `GET /marketCap/`: Params: coin_id, date (YYYY/MM/DD), currency
+- `GET /marketCap/`: Params: `coin_id, date (YYYY/MM/DD), currency`
+
 Response:
 ```json
 {
