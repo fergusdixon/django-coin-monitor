@@ -33,7 +33,7 @@ jobs:
       env:
         DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
       run: |
-        mkdir /home/runner/.cache/pypoetry/virtualenvs
+        poetry install
         poetry run coverage run --source='coin_monitor_api' manage.py test
         poetry run coverage xml
         curl https://deepsource.io/cli | sh
