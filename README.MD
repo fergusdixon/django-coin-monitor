@@ -37,7 +37,7 @@ pre-commit install
 ## Routes
 - `GET /coinList/`: Gets a list of coins
 
-Response:
+`curl --location --request GET 'http://127.0.0.1:8000/coinList'`
 ```json
 [
     {
@@ -50,7 +50,7 @@ Response:
 
 - `GET /marketCap/`: Params: `coin_id, date (YYYY/MM/DD), currency`
 
-Response:
+`curl --location --request GET 'http://127.0.0.1:8000/marketCap?coin_id=ripple&date=2020/08/05&currency=gbp'`
 ```json
 {
     "gbp": 10294177055.519627
