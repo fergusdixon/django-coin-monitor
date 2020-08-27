@@ -33,7 +33,6 @@ class MarketCapDetail(APIView):
             "gbp": 10294177055.519627
         }
         """
-        self._validate_get_params(request)
 
         # Get validate parameters
         coin_id, date, currency = self._validate_get_params(request)

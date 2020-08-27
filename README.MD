@@ -28,8 +28,14 @@ pre-commit install
 ## Scaling
 #### Caching
 JSON responses are cached per view for one hour, to minimize load on CoinGecko
-`/marketCap` views are cached according to combination of query paramaters to ensure maximum accuracy
+`/marketCap` views are cached according to combination of query parameters to ensure maximum accuracy
 and cache hit rate.
 
 #### Sessions
 The CoinGecko client uses Sessions to reuse TCP connections, reducing load on CoinGecko
+
+
+## Security
+- HTTPS (including forced redirect if not in debug mode)
+- Input validation of GET parameters
+- Validation of downstream data (CoinGecko) using pydantic models
