@@ -34,9 +34,11 @@ class MarketCapTestCase(TestCase):
         Then: the market cap for the specified currency is returned
         @return:
         """
+        # get a valid coin_id
         response = self.client.get('/coinList/')
         coins = json.loads(response.content)
         self.assertGreater(len(coins), 0)
+
         params = {
             'coin_id': coins[0].get('id'),
             'date': '2020/08/05',
@@ -49,3 +51,27 @@ class MarketCapTestCase(TestCase):
         self.assertGreater(len(market_cap), 0)
         self.assertTrue(market_cap.get('gbp', False))
         self.assertEqual(type(market_cap.get('gbp')), float)
+
+    def test_get_market_cap_malformed_date(self):
+        """
+        Given: A client
+        When: Calling the '/marketCap' endpoint with a malformed date
+        Then: and error is returned
+        @return:
+        """
+        # get a valid coin_id
+        response = self.client.get('/coinList/')
+        coins = json.loads(response.content)
+        self.assertGreater(len(coins), 0)
+
+        params = {
+            'coin_id': coins[0].get('id'),
+            'date': '2020-08-05',
+            'currency': 'gbp'
+        }
+        response = self.client.get('/marketCap/', data=params)
+
+        json_result = json.loads(response.content)
+        self.assertEqual(400, response.status_code)
+        self.assertGreater(len(json_result), 0)
+        self.assertEqual(json_result[0], 'date should be in the YYYY/MM/DD format')
