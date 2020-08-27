@@ -52,7 +52,9 @@ Response:
     "gbp": 10294177055.519627
 }
 ```
+
 ## Scaling
+
 #### Caching
 JSON responses are cached per view for one hour, to minimize load on CoinGecko.
 
