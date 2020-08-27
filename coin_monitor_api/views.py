@@ -33,6 +33,18 @@ class MarketCapDetail(APIView):
             "gbp": 10294177055.519627
         }
         """
+        self._validate_get_params(request)
+
+        # Get validate parameters
+        coin_id, date, currency = self._validate_get_params(request)
+
+        # Get the market cap
+        market_cap = CoinController.get_coin_market_cap(coin_id=coin_id, date=date, currency=currency)
+
+        return Response({currency: market_cap})
+
+    @staticmethod
+    def _validate_get_params(request: Request) -> (str, datetime, str):
         coin_id = request.query_params.get('coin_id')
 
         # Validate coin_id
@@ -53,7 +65,4 @@ class MarketCapDetail(APIView):
         if not currency:
             raise ValidationError('currency is required')
 
-        # Get the market cap
-        market_cap = CoinController.get_coin_market_cap(coin_id=coin_id, date=date, currency=currency)
-
-        return Response({currency: market_cap})
+        return coin_id, date, currency
