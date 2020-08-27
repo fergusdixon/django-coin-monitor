@@ -23,13 +23,22 @@ load_dotenv()
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1#xm*o6-78((@%yi951c#8$j^3$crf@3mgy)0rq#i!=hztq@r8'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = []
 
+# SSL settings
+if not DEBUG:
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_REFERRER_POLICY = "same-origin"
 
 # Application definition
 
