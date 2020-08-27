@@ -26,6 +26,9 @@ jobs:
       uses: abatilo/actions-poetry@v2.0.0
     - uses: TrueBrain/actions-flake8@master
 
+    - name: Set .env
+      run: cp .env.example .env
+
     - name: Run Tests
       env:
         DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
