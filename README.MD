@@ -34,8 +34,24 @@ pre-commit install
 
 ## Routes
 - `GET /coinList/`: Gets a list of coins
-- `GET /marketCap/`: Params: coin_id, date (YYYY/MM/DD), currency
+Response:
+```json
+[
+    {
+        "id": "01coin",
+        "name": "01coin",
+        "symbol": "zoc"
+    }
+]
+```
 
+- `GET /marketCap/`: Params: coin_id, date (YYYY/MM/DD), currency
+Response:
+```json
+{
+    "gbp": 10294177055.519627
+}
+```
 ## Scaling
 #### Caching
 JSON responses are cached per view for one hour, to minimize load on CoinGecko.
