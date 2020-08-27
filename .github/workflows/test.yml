@@ -24,13 +24,6 @@ jobs:
         python-version: '3.8'
     - name: Install Poetry
       run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-    - name: Install dependencies
-      run: |
-        source $HOME/.poetry/env
-        poetry install
-
-    - name: Activate env
-      run: poetry shell
 
     - uses: TrueBrain/actions-flake8@master
 
@@ -38,6 +31,8 @@ jobs:
       env:
         DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
       run: |
+        source $HOME/.poetry/env
+        poetry shell
         coverage run --source='coin_monitor_api' manage.py test
         coverage xml
         curl https://deepsource.io/cli | sh
