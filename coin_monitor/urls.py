@@ -19,5 +19,5 @@ from coin_monitor_api import views
 
 urlpatterns = [
     path('coinList/', views.CoinList.as_view()),
-    path('marketCap', views.MarketCapDetail.as_view())
+    path('marketCap/', views.MarketCapDetail.as_view())
 ]

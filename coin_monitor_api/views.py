@@ -21,10 +21,25 @@ class CoinList(APIView):
 class MarketCapDetail(APIView):
     @method_decorator(cache_page(60 * 60))
     def get(self, request: Request, format=None) -> Response:
+        """
+        Returns the market cap for a coin ID and currency, on a specific data
+        @param request: params:
+        coin_id: required
+        date: required - %Y/%m/%d
+        currency: required
+        @param format:
+        @return: Response:
+        {
+            "gbp": 10294177055.519627
+        }
+        """
         coin_id = request.query_params.get('coin_id')
+
+        # Validate coin_id
         if not coin_id:
             raise ValidationError('coin_id is required')
 
+        # Validate date
         try:
             date = request.query_params.get('date')
             if not date:
@@ -33,9 +48,12 @@ class MarketCapDetail(APIView):
         except ValueError:
             raise ValidationError('date should be in the YYYY/MM/DD format')
 
+        # Validate currency
         currency = request.query_params.get('currency')
         if not currency:
             raise ValidationError('currency is required')
 
+        # Get the market cap
         market_cap = CoinController.get_coin_market_cap(coin_id=coin_id, date=date, currency=currency)
+
         return Response({currency: market_cap})
