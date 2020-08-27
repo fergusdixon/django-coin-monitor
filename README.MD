@@ -72,7 +72,7 @@ The CoinGecko client uses Sessions to reuse TCP connections, reducing load on Co
 ## Security
 - HTTPS (including forced redirect if not in debug mode)
 - Input validation of GET parameters
-- Validation of downstream data (CoinGecko) using pydantic models
+- Validation of upstream data (CoinGecko) using pydantic models
 
 ## Redundancy
 - 3 retries to CoinGecko with a backoff of 0.2
