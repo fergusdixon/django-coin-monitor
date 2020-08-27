@@ -1,6 +1,7 @@
 # Coin Monitor API
-![Test and Flake8](https://github.com/fergusdixon/coin-monitor/workflows/Test%20and%20Flake8/badge.svg?branch=master)
-[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/fergusdixon/coin-monitor/?ref=repository-badge)
+![Test and Flake8](https://github.com/fergusdixon/django-coin-monitor/workflows/Test%20and%20Flake8/badge.svg?branch=master)
+[![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/fergusdixon/django-coin-monitor/?ref=repository-badge)
+
 ## Setup
 
 #### Poetry
