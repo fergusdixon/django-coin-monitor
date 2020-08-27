@@ -30,4 +30,8 @@ jobs:
       env:
         DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
       run: |
-        poetry shell
+        poetry shell -n
+        coverage run --source='coin_monitor_api' manage.py test
+        coverage xml
+        curl https://deepsource.io/cli | sh
+        ./bin/deepsource report --analyzer test-coverage --key python --value-file ./coverage.xml
