@@ -23,15 +23,13 @@ jobs:
       with:
         python-version: '3.8'
     - name: Install Poetry
-      run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-
+      uses: abatilo/actions-poetry@v1.0.0
     - uses: TrueBrain/actions-flake8@master
 
     - name: Run Tests
       env:
         DEEPSOURCE_DSN: ${{ secrets.DEEPSOURCE_DSN }}
       run: |
-        source $HOME/.poetry/env
         poetry shell
         coverage run --source='coin_monitor_api' manage.py test
         coverage xml
