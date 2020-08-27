@@ -31,7 +31,7 @@ class MarketCapDetail(APIView):
                 raise ValidationError('date is required')
             date = datetime.strptime(date, '%Y/%m/%d')
         except ValueError:
-            raise ValidationError('date should be in the YYYY/MM/DD')
+            raise ValidationError('date should be in the YYYY/MM/DD format')
 
         currency = request.query_params.get('currency')
         if not currency:

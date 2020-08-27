@@ -1,6 +1,8 @@
 import os
 from datetime import datetime
 
+from django.http import Http404
+
 from coin_monitor_api.clients.coin_gecko_client import CoinGeckoClient
 from coin_monitor_api.models import Coin
 
@@ -21,5 +23,7 @@ class CoinController:
         )
         if result.get('errors'):
             return result
-
-        return result.get('market_data', {}).get('market_cap', {}).get(currency)
+        caps = result.get('market_data', {}).get('market_cap', {})
+        if not caps.get(currency):
+            raise Http404()
+        return caps.get(currency)
