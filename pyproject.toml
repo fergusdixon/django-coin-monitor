@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-django = "3.1"
+django = "3.1.14"
 djangorestframework = "^3.11.1"
 asgiref = "^3.2.10"
 python-dotenv = "^0.14.0"
